@@ -2,7 +2,18 @@
 
 <%= render @restaurant %>
 
+<p><strong>Reviews</strong></p>
+<ul class="list-group">
+  <% @restaurant.reviews.each do |review| %>
+    <li class="list-group-item">
+      Rating: <%= review.rating %><br>
+      <%= review.content %>
+    </li>
+  <% end %>
+</ul>
+<br>
 <div>
+  <%= link_to "New Review", new_restaurant_review_path(@restaurant) %> <br />
   <%= link_to "Edit this restaurant", edit_restaurant_path(@restaurant) %> |
   <%= link_to "Back to restaurants", restaurants_path %>
 
